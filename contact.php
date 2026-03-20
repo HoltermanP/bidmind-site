@@ -3,7 +3,8 @@
  * Mail-endpoint voor demo-aanvraagformulier (o.a. Strato).
  *
  * Strato: smtp.strato.de — standaard 465 + ssl; bij problemen automatisch 587 + tls.
- * Wachtwoord: contact.secret.php of omgevingsvariabele BIDMIND_SMTP_PASSWORD.
+ * Wachtwoord: contact.secret.php of SMTP_PASS, BIDMIND_SMTP_PASSWORD of SMTP-PASS (Vercel-typfout).
+ * Optioneel zelfde namen als Vercel: SMTP_HOST, SMTP_PORT, SMTP_USER, CONTACT_EMAIL, FROM_EMAIL.
  * Zie MAIL-SETUP.md en contact.secret.php.example.
  */
 header('Content-Type: application/json; charset=utf-8');
@@ -45,9 +46,48 @@ if (is_readable($secretFile)) {
     }
 }
 
-$envPass = getenv('BIDMIND_SMTP_PASSWORD');
+$envPass = getenv('SMTP_PASS');
+if (!is_string($envPass) || $envPass === '') {
+    $envPass = getenv('BIDMIND_SMTP_PASSWORD');
+}
+if (!is_string($envPass) || $envPass === '') {
+    $envPass = getenv('SMTP-PASS');
+}
 if (is_string($envPass) && $envPass !== '' && ($MAIL_CONFIG['smtp']['password'] ?? '') === '') {
     $MAIL_CONFIG['smtp']['password'] = $envPass;
+}
+
+$envS = static function (string $key): string {
+    $v = getenv($key);
+    return is_string($v) ? trim($v) : '';
+};
+if ($envS('CONTACT_EMAIL') !== '') {
+    $MAIL_CONFIG['to'] = $envS('CONTACT_EMAIL');
+}
+if ($envS('FROM_EMAIL') !== '') {
+    $MAIL_CONFIG['from'] = $envS('FROM_EMAIL');
+}
+if ($envS('SMTP_HOST') !== '') {
+    $MAIL_CONFIG['smtp']['host'] = $envS('SMTP_HOST');
+}
+$smtpPortEnv = $envS('SMTP_PORT');
+if ($smtpPortEnv !== '' && ctype_digit($smtpPortEnv)) {
+    $MAIL_CONFIG['smtp']['port'] = (int) $smtpPortEnv;
+    $p = (int) $smtpPortEnv;
+    $encEnv = strtolower($envS('SMTP_ENCRYPTION'));
+    if ($encEnv === 'tls' || $encEnv === 'ssl') {
+        $MAIL_CONFIG['smtp']['encryption'] = $encEnv;
+    } else {
+        $MAIL_CONFIG['smtp']['encryption'] = $p === 587 ? 'tls' : 'ssl';
+    }
+} else {
+    $encEnv = strtolower($envS('SMTP_ENCRYPTION'));
+    if ($encEnv === 'tls' || $encEnv === 'ssl') {
+        $MAIL_CONFIG['smtp']['encryption'] = $encEnv;
+    }
+}
+if ($envS('SMTP_USER') !== '') {
+    $MAIL_CONFIG['smtp']['username'] = $envS('SMTP_USER');
 }
 // ─────────────────────────────────────────────────────────────
 
@@ -196,11 +236,11 @@ if ($useSmtp) {
         }
     }
 } elseif ($smtpHost !== '') {
-    error_log('[contact.php] SMTP-host gezet maar wachtwoord ontbreekt (contact.secret.php of BIDMIND_SMTP_PASSWORD?)');
+    error_log('[contact.php] SMTP-host gezet maar wachtwoord ontbreekt (contact.secret.php of SMTP_PASS / BIDMIND_SMTP_PASSWORD?)');
     http_response_code(500);
     $payload = ['ok' => false, 'error' => 'smtp_password_missing'];
     if (!empty($MAIL_CONFIG['debug'])) {
-        $payload['detail'] = 'Vul smtp.password in contact.secret.php of zet BIDMIND_SMTP_PASSWORD op de server.';
+        $payload['detail'] = 'Vul smtp.password in contact.secret.php of zet SMTP_PASS (of BIDMIND_SMTP_PASSWORD) op de server.';
     }
     echo json_encode($payload);
     exit;

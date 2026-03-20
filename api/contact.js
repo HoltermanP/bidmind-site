@@ -1,13 +1,22 @@
 /**
- * Vercel Serverless: demo-aanvraag → e-mail.
- *
- * Optie A — Resend (aanbevolen op Vercel): zet RESEND_API_KEY (+ BIDMIND_MAIL_TO, BIDMIND_MAIL_FROM).
- * Optie B — SMTP (bijv. Strato): zet BIDMIND_SMTP_* variabelen. Zie MAIL-SETUP.md.
+ * Vercel Serverless: demo-aanvraag → e-mail via SMTP (Strato-defaults als host/user ontbreken).
+ * Zie MAIL-SETUP.md.
  */
 
 const nodemailer = require('nodemailer');
 
 const utf8len = (s) => [...s].length;
+
+/** Eerst “generieke” Vercel-namen, daarna BIDMIND_* fallback. Verwijdert BOM / trimt (copy-paste uit editors). */
+function envTrim(...keys) {
+  for (const k of keys) {
+    const v = process.env[k];
+    if (v == null) continue;
+    const s = String(v).replace(/^\uFEFF/, '').trim();
+    if (s !== '') return s;
+  }
+  return '';
+}
 
 async function readJsonBody(req) {
   if (req.body != null && typeof req.body === 'object' && !Buffer.isBuffer(req.body)) {
@@ -35,35 +44,21 @@ function clientIp(req) {
   return req.headers['x-real-ip'] || 'onbekend';
 }
 
-async function sendViaResend({ apiKey, from, to, replyToEmail, subject, text }) {
-  const r = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      subject,
-      text,
-      reply_to: replyToEmail,
-    }),
-  });
-  const data = await r.json().catch(() => ({}));
-  if (!r.ok) {
-    const msg = data.message || data.error || r.statusText || 'resend_failed';
-    throw new Error(msg);
-  }
-  return true;
-}
-
+/** Zelfde Strato-defaults als contact.php — zo volstaat op Vercel vaak SMTP_USER + SMTP_PASS. */
 function smtpFromEnv() {
-  const host = (process.env.BIDMIND_SMTP_HOST || '').trim();
-  const password = process.env.BIDMIND_SMTP_PASSWORD || '';
-  if (!host || !password) return null;
-  const port = parseInt(process.env.BIDMIND_SMTP_PORT || '465', 10) || 465;
-  let enc = (process.env.BIDMIND_SMTP_ENCRYPTION || '').toLowerCase();
+  const password = envTrim(
+    'SMTP_PASS',
+    'BIDMIND_SMTP_PASSWORD',
+    'SMTP_PASSWORD',
+    'SMTP-PASS'
+  );
+  if (!password) return null;
+  const host =
+    envTrim('SMTP_HOST', 'BIDMIND_SMTP_HOST', 'SMTP-HOST') || 'smtp.strato.de';
+  const user =
+    envTrim('SMTP_USER', 'BIDMIND_SMTP_USER', 'SMTP-USER') || 'info@bidmind.nl';
+  const port = parseInt(envTrim('SMTP_PORT', 'BIDMIND_SMTP_PORT') || '465', 10) || 465;
+  let enc = envTrim('SMTP_ENCRYPTION', 'BIDMIND_SMTP_ENCRYPTION').toLowerCase();
   if (!enc) {
     enc = port === 587 ? 'tls' : 'ssl';
   }
@@ -73,16 +68,20 @@ function smtpFromEnv() {
     port,
     secure,
     auth: {
-      user: (process.env.BIDMIND_SMTP_USER || '').trim(),
+      user,
       pass: password,
     },
-    relaxSsl: process.env.BIDMIND_SMTP_RELAX_SSL === '1' || process.env.BIDMIND_SMTP_RELAX_SSL === 'true',
+    relaxSsl:
+      process.env.SMTP_RELAX_SSL === '1' ||
+      process.env.SMTP_RELAX_SSL === 'true' ||
+      process.env.BIDMIND_SMTP_RELAX_SSL === '1' ||
+      process.env.BIDMIND_SMTP_RELAX_SSL === 'true',
   };
 }
 
 async function sendViaSmtp({ from, to, replyToEmail, replyToName, subject, text }, cfg) {
   if (!cfg.auth.user) {
-    throw new Error('BIDMIND_SMTP_USER ontbreekt');
+    throw new Error('SMTP_USER ontbreekt');
   }
   const transporter = nodemailer.createTransport({
     host: cfg.host,
@@ -155,8 +154,8 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const to = (process.env.BIDMIND_MAIL_TO || 'info@bidmind.nl').trim();
-  const from = (process.env.BIDMIND_MAIL_FROM || to).trim();
+  const to = envTrim('CONTACT_EMAIL', 'BIDMIND_MAIL_TO') || 'info@bidmind.nl';
+  const from = envTrim('FROM_EMAIL', 'BIDMIND_MAIL_FROM') || to;
   const subject = 'Demo-aanvraag www.bidmind.nl';
   const textBody =
     'Demo-aanvraag via de website.\r\n\r\n' +
@@ -167,23 +166,9 @@ module.exports = async (req, res) => {
     `Tijdstip: ${new Date().toISOString().replace('T', ' ').slice(0, 19)} UTC\r\n` +
     `IP: ${clientIp(req)}\r\n`;
 
-  const resendKey = (process.env.RESEND_API_KEY || '').trim();
   const smtp = smtpFromEnv();
 
   try {
-    if (resendKey) {
-      await sendViaResend({
-        apiKey: resendKey,
-        from: `BidMind website <${from}>`,
-        to,
-        replyToEmail: email,
-        subject,
-        text: textBody,
-      });
-      res.status(200).json({ ok: true });
-      return;
-    }
-
     if (smtp) {
       await sendViaSmtp(
         {
@@ -200,14 +185,24 @@ module.exports = async (req, res) => {
       return;
     }
 
-    console.error('[api/contact] Geen RESEND_API_KEY en geen volledige SMTP-config (BIDMIND_SMTP_*)');
+    console.error('[api/contact] Geen SMTP-config (SMTP_PASS e.d.)');
+    const debugSmtpHint =
+      debug &&
+      JSON.stringify({
+        VERCEL_ENV: process.env.VERCEL_ENV || null,
+        SMTP_PASS_aanwezig: Object.prototype.hasOwnProperty.call(process.env, 'SMTP_PASS'),
+        SMTP_PASS_niet_leeg: envTrim('SMTP_PASS') !== '',
+        BIDMIND_SMTP_PASSWORD_niet_leeg: envTrim('BIDMIND_SMTP_PASSWORD') !== '',
+        SMTP_PASSWORD_niet_leeg: envTrim('SMTP_PASSWORD') !== '',
+      });
     res.status(500).json({
       ok: false,
       error: 'smtp_password_missing',
       ...(debug
         ? {
             detail:
-              'Zet RESEND_API_KEY of BIDMIND_SMTP_HOST + BIDMIND_SMTP_USER + BIDMIND_SMTP_PASSWORD in Vercel Environment Variables.',
+              'Vul SMTP_PASS (mailbox-wachtwoord) en SMTP_USER; SMTP_HOST alleen nodig als je geen Strato-default wilt. Zelfde variabelen voor Production én Preview; na wijzigingen opnieuw deployen.',
+            env_hint: debugSmtpHint,
           }
         : {}),
     });

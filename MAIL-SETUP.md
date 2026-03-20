@@ -1,37 +1,33 @@
 # E-mail instellen (BidMind website)
 
-Demo-aanvragen komen binnen op **info@bidmind.nl** (tenzij je `BIDMIND_MAIL_TO` aanpast), onderwerp: *Demo-aanvraag www.bidmind.nl*.
+Demo-aanvragen komen binnen op **info@bidmind.nl** (tenzij je `CONTACT_EMAIL` of `BIDMIND_MAIL_TO` aanpast), onderwerp: *Demo-aanvraag www.bidmind.nl*.
 
 ## Vercel (productie)
 
 Het contactformulier roept **`/api/contact`** aan (zie `api/contact.js`). In het Vercel-dashboard: **Project → Settings → Environment Variables**.
 
-### Optie A — Resend (aanbevolen)
+### SMTP van je domein (Strato / eigen mailserver)
 
-1. Account op [Resend](https://resend.com), domein verifiëren, API-key aanmaken.
-2. Zet o.a.:
+Zet deze variabelen (zoals in Vercel vaak genoemd: `SMTP_*`, `CONTACT_EMAIL`, `FROM_EMAIL`). Geen `contact.secret.php` op Vercel nodig.
 
-| Variabele | Voorbeeld |
-|-----------|-----------|
-| `RESEND_API_KEY` | `re_…` |
-| `BIDMIND_MAIL_FROM` | bijv. `demo@jouwdomein.nl` — in `api/contact.js` wordt de weergavenaam `BidMind website` gezet; het domein moet bij Resend geverifieerd zijn |
-| `BIDMIND_MAIL_TO` | `info@bidmind.nl` |
+**Belangrijk:** de naam van het wachtwoord moet exact kloppen: gebruik **`SMTP_PASS`** (underscore), niet `SMTP-PASS`. Als je per ongeluk een koppelteken hebt gebruikt, werkt het sinds een recente update ook met `SMTP-PASS`. Minimaal nodig voor Strato: **`SMTP_PASS`** + **`SMTP_USER`** (mailbox + wachtwoord). `SMTP_HOST` hoeft niet als je Strato gebruikt: standaard is dan `smtp.strato.de` (zelfde als `contact.php`). Bij een **andere** SMTP-provider moet je `SMTP_HOST` (en poort) wél zetten.
 
-### Optie B — SMTP (bijv. Strato)
-
-Zet alle onderstaande variabelen (geen `contact.secret.php` op Vercel nodig):
+**Preview-deployments:** environment variables staan per omgeving. Test je op een Vercel-preview-URL? Zet dezelfde variabelen ook voor **Preview** (niet alleen Production), of kopieer ze.
 
 | Variabele | Voorbeeld |
 |-----------|-----------|
-| `BIDMIND_MAIL_TO` | `info@bidmind.nl` |
-| `BIDMIND_MAIL_FROM` | `info@bidmind.nl` |
-| `BIDMIND_SMTP_HOST` | `smtp.strato.de` |
-| `BIDMIND_SMTP_PORT` | `465` of `587` |
-| `BIDMIND_SMTP_ENCRYPTION` | `ssl` (465) of `tls` (587) |
-| `BIDMIND_SMTP_USER` | volledig e-mailadres mailbox |
-| `BIDMIND_SMTP_PASSWORD` | mailbox-wachtwoord |
+| `CONTACT_EMAIL` | `info@bidmind.nl` (waar de demo-aanvragen binnenkomen) |
+| `FROM_EMAIL` | `info@bidmind.nl` (afzender; liefst dezelfde mailbox/domein als bij je provider) |
+| `SMTP_HOST` | `smtp.strato.de` (optioneel bij Strato; default in `api/contact.js`) |
+| `SMTP_PORT` | `465` of `587` |
+| `SMTP_USER` | volledig e-mailadres mailbox |
+| `SMTP_PASS` | mailbox-wachtwoord (ook: `BIDMIND_SMTP_PASSWORD`, `SMTP_PASSWORD`) |
 
-Optioneel: `BIDMIND_SMTP_RELAX_SSL=true` bij certificaatproblemen (minder veilig).  
+Optioneel: `SMTP_ENCRYPTION` — `ssl` (465) of `tls` (587). Als je dit weglaat, kiest `api/contact.js` op basis van de poort (587 → tls, anders ssl).
+
+Ook geldig (legacy, zelfde betekenis): `BIDMIND_MAIL_TO`, `BIDMIND_MAIL_FROM`, `BIDMIND_SMTP_HOST`, `BIDMIND_SMTP_PORT`, `BIDMIND_SMTP_USER`, `BIDMIND_SMTP_PASSWORD`, `BIDMIND_SMTP_ENCRYPTION`.
+
+Optioneel: `SMTP_RELAX_SSL=true` of `BIDMIND_SMTP_RELAX_SSL=true` bij certificaatproblemen (minder veilig).  
 Optioneel: `BIDMIND_DEBUG=true` tijdelijk — bij fouten krijgt het JSON-antwoord een veld **`detail`** (alleen voor troubleshooting).
 
 **Build:** Vercel voert `npm install` uit; `package.json` bevat `nodemailer` voor SMTP. Er is geen Prisma in dit project.
@@ -65,7 +61,7 @@ Typische SMTP-waarden bij Strato:
 | Host | `smtp.strato.de` (niet `.com`) |
 | Poort | Standaard in `contact.php`: **465** + **ssl**; script probeert automatisch **587** + **tls** als de eerste poging faalt |
 | Gebruikersnaam | je volledige e-mailadres |
-| Wachtwoord | in `contact.secret.php`, of server-omgeving **`BIDMIND_SMTP_PASSWORD`** (als `contact.secret.php` geen wachtwoord heeft) |
+| Wachtwoord | in `contact.secret.php`, of server-omgeving **`SMTP_PASS`** of **`BIDMIND_SMTP_PASSWORD`** (als `contact.secret.php` geen wachtwoord heeft) |
 
 Bij foutmeldingen over TLS/certificaat: in `contact.secret.php` onder `smtp` kun je tijdelijk **`'relax_ssl' => true`** zetten (alleen als nodig).
 
