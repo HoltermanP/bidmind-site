@@ -14,7 +14,7 @@ Het contactformulier roept **`/api/contact`** aan (zie `api/contact.js`). In het
 | Variabele | Voorbeeld |
 |-----------|-----------|
 | `RESEND_API_KEY` | `re_…` |
-| `BIDMIND_MAIL_FROM` | `Demo &lt;demo@jouwdomein.nl&gt;` (verzonden *from* moet op je geverifieerde domein staan) |
+| `BIDMIND_MAIL_FROM` | bijv. `demo@jouwdomein.nl` — in `api/contact.js` wordt de weergavenaam `BidMind website` gezet; het domein moet bij Resend geverifieerd zijn |
 | `BIDMIND_MAIL_TO` | `info@bidmind.nl` |
 
 ### Optie B — SMTP (bijv. Strato)
