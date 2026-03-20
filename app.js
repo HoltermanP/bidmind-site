@@ -36,7 +36,7 @@ const revealObs = new IntersectionObserver(entries => {
 
 /* Elements to animate in */
 [
-  '.feat-card', '.step-card', '.fw-card', '.testi-card',
+  '.fp-col', '.step-card', '.fw-card', '.testi-card',
   '.logo-pill', '.mm-metric', '.bene-item',
 ].forEach(sel => {
   document.querySelectorAll(sel).forEach(el => {
@@ -46,7 +46,7 @@ const revealObs = new IntersectionObserver(entries => {
 });
 
 /* Section headers fade up */
-document.querySelectorAll('.section-h2, .section-sub, .section-label, .feat-main, .bv-card-main').forEach(el => {
+document.querySelectorAll('.section-h2, .section-sub, .section-label, .feat-main, .feat-pipeline, .bv-card-main').forEach(el => {
   el.classList.add('reveal');
   revealObs.observe(el);
 });
