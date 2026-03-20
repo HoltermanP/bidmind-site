@@ -1,0 +1,6 @@
+contact.secret.php
+.DS_Store
+node_modules/
+.env
+.env.local
+.vercel

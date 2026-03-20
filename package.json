@@ -1,0 +1,13 @@
+{
+  "name": "bidmind-site",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "typecheck": "node -e \"console.log('Geen TypeScript in dit project.')\""
+  },
+  "dependencies": {
+    "nodemailer": "^8.0.3"
+  }
+}
