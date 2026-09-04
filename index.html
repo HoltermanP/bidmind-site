@@ -3,820 +3,702 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BidMind – Win meer aanbestedingen met AI</title>
+  <title>BidMind – Aanbestedingssoftware voor elke sector</title>
+  <meta name="description" content="BidMind signaleert, analyseert, schrijft en reviewt aanbestedingen. Eén abonnement met alles inbegrepen voor € 899 per maand. Voor bouw, zorg, ICT, facilitair, advies en meer." />
+  <meta property="og:title" content="BidMind – Meer aanbestedingen winnen, minder uren per inschrijving" />
+  <meta property="og:description" content="Signaleren, analyseren, go/no-go, schrijven en reviewen in één platform. Alles inbegrepen voor € 899 per maand." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0F1E3D" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- NAV -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner container">
-      <a href="#" class="logo">
-        <div class="logo-mark">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-            <rect x="2.5" y="2.5" width="17" height="17" rx="4.4" stroke="white" stroke-width="1.8"/>
-            <path d="M6.6 7.4h8.7M6.6 11h6.4M6.6 14.6h7.6" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-            <circle cx="16.7" cy="16.7" r="2.8" fill="white" opacity="0.25"/>
-            <path d="M15.6 16.7l.9.9 1.8-1.8" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" aria-label="BidMind">
+        <span class="logo-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+            <rect x="2.5" y="2.5" width="17" height="17" rx="4" stroke="white" stroke-width="1.8"/>
+            <path d="M6.6 7.4h8.7M6.6 11h6.4M6.6 14.6h4.6" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M13.4 15.4l1.4 1.4 2.8-2.8" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-        </div>
-        BidMind
+        </span>
+        <span class="logo-text">BidMind</span>
       </a>
-      <ul class="nav-links">
-        <li>
-          <a href="#how-it-works">
-            <span class="nav-link-inner">
-              <svg class="nav-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/>
-              </svg>
-              Werkwijze
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#features">
-            <span class="nav-link-inner">
-              <svg class="nav-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
-              </svg>
-              Functies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#benefits">
-            <span class="nav-link-inner">
-              <svg class="nav-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
-              </svg>
-              Voordelen
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#testimonials">
-            <span class="nav-link-inner">
-              <svg class="nav-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-              Klanten
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#contact">
-            <span class="nav-link-inner">
-              <svg class="nav-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
-              Contact
-            </span>
-          </a>
-        </li>
-      </ul>
+
+      <nav class="nav-links" aria-label="Hoofdmenu">
+        <a href="#werkwijze">Werkwijze</a>
+        <a href="#functies">Functies</a>
+        <a href="#cases">Cases</a>
+        <a href="#sectoren">Sectoren</a>
+        <a href="#prijs">Prijs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
       <div class="nav-cta">
-        <div class="nav-partner">
-          <span class="nav-partner-label">Een product van</span>
-          <a href="https://www.ai-group.nl" class="btn-nav-partner" target="_blank" rel="noopener noreferrer" aria-label="Een product van AI-Group">AI-Group</a>
-        </div>
-        <a href="#contact" class="btn-nav-primary">Demo aanvragen <span class="btn-arrow">→</span></a>
+        <a href="mailto:info@bidmind.nl" class="nav-mail">info@bidmind.nl</a>
+        <a href="#contact" class="btn btn-primary btn-sm">Demo plannen</a>
       </div>
-      <button class="hamburger" id="hamburger">
+
+      <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
+
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#how-it-works">
-        <span class="nav-link-inner">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/>
-          </svg>
-          Werkwijze
-        </span>
-      </a>
-      <a href="#features">
-        <span class="nav-link-inner">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
-          </svg>
-          Functies
-        </span>
-      </a>
-      <a href="#benefits">
-        <span class="nav-link-inner">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
-          </svg>
-          Voordelen
-        </span>
-      </a>
-      <a href="#testimonials">
-        <span class="nav-link-inner">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-          Klanten
-        </span>
-      </a>
-      <a href="#contact">
-        <span class="nav-link-inner">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-          Contact
-        </span>
-      </a>
-      <a href="https://www.ai-group.nl" class="nav-mob-partner" target="_blank" rel="noopener noreferrer">
-        <span class="nav-link-inner">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="m15 3 6 6"/><path d="M10 14 21 3"/>
-          </svg>
-          Een product van AI-Group
-        </span>
-      </a>
-      <a href="#contact" class="mob-cta">Demo aanvragen →</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="#functies">Functies</a>
+      <a href="#cases">Cases</a>
+      <a href="#sectoren">Sectoren</a>
+      <a href="#prijs">Prijs</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-primary mob-cta">Demo plannen</a>
     </div>
-  </nav>
+  </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg-blobs">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
-      <div class="blob blob-4"></div>
-    </div>
-    <div class="hero-noise"></div>
+  <main id="top">
 
-    <div class="container hero-content">
-      <p class="hero-eyebrow">
-        <span>AI-sectiegenerator</span>
-        <span class="eyebrow-sep" aria-hidden="true">·</span>
-        <span>NVI- en eisenondersteuning</span>
-        <span class="eyebrow-sep" aria-hidden="true">·</span>
-        <span>Structuur uit tenderdocumenten</span>
-      </p>
-
-      <h1 class="hero-h1">
-        Win meer aanbestedingen.<br />
-        <span class="h1-gradient">Schrijf ze 3× sneller.</span>
-      </h1>
-
-      <p class="hero-p">
-        BidMind transformeert jouw aanbestedingsproces — van ruwe tenderdocumenten
-        naar een complete, overtuigende aanbieding. Minder handwerk, meer strategie, betere inschrijvingen.
-      </p>
-
-      <p class="hero-partner">
-        <span class="hero-partner-intro">Een product van</span>
-        <a href="https://www.ai-group.nl" class="hero-partner-cta" target="_blank" rel="noopener noreferrer">
-          AI-Group
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="m15 3 6 6"/><path d="M10 14 21 3"/></svg>
-        </a>
-      </p>
-
-      <div class="hero-btns">
-        <a href="#contact" class="cta-btn cta-btn-primary">
-          Vraag een demo aan
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M9.75 4.5L14.25 9l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <div class="hero-social-proof">
-        <div class="avatar-stack">
-          <div class="av av-1">M</div>
-          <div class="av av-2">R</div>
-          <div class="av av-3">J</div>
-          <div class="av av-4">S</div>
-        </div>
-        <p><strong>150+ tenderprofessionals</strong> gebruiken BidMind dagelijks</p>
-      </div>
-    </div>
-
-    <!-- Dashboard mockup -->
-    <div class="hero-mock container">
-      <div class="mock-frame">
-        <div class="mock-titlebar">
-          <div class="mock-dots"><span></span><span></span><span></span></div>
-          <div class="mock-addr">app.bidmind.nl / tender / dijkversterking-2024</div>
-          <div class="mock-actions"><span class="tag tag-green">● Live</span></div>
-        </div>
-        <div class="mock-body">
-          <!-- Sidebar -->
-          <div class="mock-sidebar">
-            <div class="msb-label">Tenders</div>
-            <div class="msb-item msb-active">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M4 4h6M4 7h4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
-              Overzicht
-            </div>
-            <div class="msb-item">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 1h7l3 3v9a1 1 0 01-1 1H2a1 1 0 01-1-1V2a1 1 0 011-1z" stroke="currentColor" stroke-width="1.3"/></svg>
-              Documenten
-            </div>
-            <div class="msb-item">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 4.5V7l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              NVI-vragen
-            </div>
-            <div class="msb-item">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 11l2.5-2.5 2.5 2.5L11 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Secties
-            </div>
-            <div class="msb-divider"></div>
-            <div class="msb-label">Snel openen</div>
-            <div class="msb-item msb-tender">Dijkversterking '24</div>
-            <div class="msb-item msb-tender">Onderhoud A12 '24</div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Aanbestedingssoftware voor elke sector</p>
+          <h1>Meer aanbestedingen <em>winnen</em>.<br />Minder uren per inschrijving.</h1>
+          <p class="lead">
+            BidMind signaleert relevante aanbestedingen, analyseert de stukken, adviseert over go/no-go
+            en schrijft en reviewt de inschrijving in uw huisstijl. Eén platform voor het hele tenderteam,
+            van eerste signaal tot indiening.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary btn-lg">Demo plannen <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#prijs" class="btn btn-outline-light btn-lg">Bekijk het abonnement</a>
           </div>
-          <!-- Main content -->
-          <div class="mock-main">
-            <div class="mm-topbar">
-              <div>
-                <div class="mm-title">Dijkversterking Hollandsche IJssel 2024</div>
-                <div class="mm-sub">Waterschap Rivierenland · Deadline: 14 mrt 2025</div>
-              </div>
-              <div class="mm-tags">
-                <span class="tag tag-blue">In review</span>
-                <button class="mm-export">↓ Export Word</button>
-              </div>
+          <ul class="hero-trust" aria-label="Kenmerken">
+            <li>Alles inbegrepen voor € 899 per maand</li>
+            <li>EU-hosting en verwerkersovereenkomst</li>
+            <li>Onboarding binnen drie weken</li>
+          </ul>
+        </div>
+
+        <!-- Product view -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="app">
+            <div class="app-bar">
+              <span class="app-bar-title">Inschrijvingen</span>
+              <span class="app-bar-meta">Actieve dossiers · team Tenders</span>
             </div>
-            <div class="mm-progress-row">
-              <span class="mm-prog-label">Voortgang aanbieding</span>
-              <span class="mm-prog-pct">68%</span>
-            </div>
-            <div class="mm-prog-bar"><div class="mm-prog-fill" style="width:68%"></div></div>
-            <div class="mm-metrics">
-              <div class="mm-metric">
-                <div class="mm-metric-val">12</div>
-                <div class="mm-metric-key">Documenten</div>
+            <div class="app-body">
+              <div class="app-table">
+                <div class="app-row app-row-head">
+                  <span>Aanbesteding</span><span>Fase</span><span>Status</span>
+                </div>
+                <div class="app-row">
+                  <span class="app-name">Schoonmaak onderwijslocaties<small>Onderwijsstichting · 14 locaties</small></span>
+                  <span><span class="chip chip-blue">Signaal</span></span>
+                  <span class="app-status"><i class="app-bar-1"></i>Sterke match</span>
+                </div>
+                <div class="app-row app-row-active">
+                  <span class="app-name">Raamovereenkomst ICT-detachering<small>Provincie · 4 percelen</small></span>
+                  <span><span class="chip chip-amber">Go/no-go</span></span>
+                  <span class="app-status"><i class="app-bar-2"></i>Advies: go</span>
+                </div>
+                <div class="app-row">
+                  <span class="app-name">Wmo-begeleiding regio Noord<small>Samenwerkende gemeenten</small></span>
+                  <span><span class="chip chip-navy">Schrijven</span></span>
+                  <span class="app-status"><i class="app-bar-3"></i>Concept gereed</span>
+                </div>
+                <div class="app-row">
+                  <span class="app-name">Onderhoud openbare verlichting<small>Gemeente · 4 jaar</small></span>
+                  <span><span class="chip chip-green">Review</span></span>
+                  <span class="app-status"><i class="app-bar-4"></i>Klaar voor indiening</span>
+                </div>
               </div>
-              <div class="mm-metric">
-                <div class="mm-metric-val">8</div>
-                <div class="mm-metric-key">NVI-vragen</div>
-              </div>
-              <div class="mm-metric">
-                <div class="mm-metric-val">6/9</div>
-                <div class="mm-metric-key">Secties</div>
-              </div>
-              <div class="mm-metric">
-                <div class="mm-metric-val">3.4k</div>
-                <div class="mm-metric-key">Woorden</div>
-              </div>
-            </div>
-            <div class="mm-sections">
-              <div class="mm-sec-row">
-                <div class="sec-dot sec-green"></div>
-                <span class="sec-name">Plan van Aanpak</span>
-                <span class="sec-words">1.240 w.</span>
-                <span class="tag tag-green tag-xs">Goedgekeurd</span>
-              </div>
-              <div class="mm-sec-row">
-                <div class="sec-dot sec-green"></div>
-                <span class="sec-name">Kwaliteitsborging</span>
-                <span class="sec-words">890 w.</span>
-                <span class="tag tag-green tag-xs">Goedgekeurd</span>
-              </div>
-              <div class="mm-sec-row">
-                <div class="sec-dot sec-amber"></div>
-                <span class="sec-name">Referenties</span>
-                <span class="sec-words">640 w.</span>
-                <span class="tag tag-amber tag-xs">Review</span>
-              </div>
-              <div class="mm-sec-row mm-sec-generating">
-                <div class="sec-dot sec-indigo"></div>
-                <span class="sec-name">Projectorganisatie &amp; verantwoordelijkheden</span>
-                <span class="sec-words">AI schrijft...</span>
-                <span class="tag tag-indigo tag-xs generating-pulse">Genereren</span>
-              </div>
-            </div>
-          </div>
-          <!-- AI panel -->
-          <div class="mock-ai">
-            <div class="ai-top">
-              <div class="ai-logo-sm">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="white" opacity="0.9"/><path d="M4.5 7l1.5 1.5L9.5 5" stroke="#4F46E5" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <span>BidMind AI</span>
-            </div>
-            <div class="ai-msg ai-msg-bot">
-              Ik heb <strong>3 kritieke eisen</strong> geïdentificeerd die je aanbieding moet adresseren:
-            </div>
-            <div class="ai-req-item ai-req-red">
-              <span>Omzet min. €2M (3 jaar)</span>
-              <span class="req-chip req-red">Verplicht</span>
-            </div>
-            <div class="ai-req-item ai-req-orange">
-              <span>ISO 9001 certificering</span>
-              <span class="req-chip req-orange">Kritisch</span>
-            </div>
-            <div class="ai-req-item ai-req-blue">
-              <span>3 referenties &gt;€500K</span>
-              <span class="req-chip req-blue">Gunning</span>
-            </div>
-            <div class="ai-msg ai-msg-suggestion">
-              Wil ik alvast een <strong>Plan van Aanpak</strong> genereren op basis van deze eisen?
-            </div>
-            <div class="ai-btns">
-              <button class="ai-cta">Ja, genereer ✨</button>
-              <button class="ai-skip">Meer details</button>
+
+              <aside class="app-panel">
+                <div class="app-panel-head">
+                  <span class="app-panel-label">Analyse</span>
+                  <strong>Raamovereenkomst ICT-detachering</strong>
+                </div>
+                <dl class="app-kv">
+                  <div><dt>Eisenmatrix</dt><dd>Compleet</dd></div>
+                  <div><dt>Gunningscriteria</dt><dd>Kwaliteit en prijs</dd></div>
+                  <div><dt>Referentie-eisen</dt><dd>Aantoonbaar</dd></div>
+                  <div><dt>Risico's</dt><dd class="app-warn">Gemarkeerd</dd></div>
+                </dl>
+                <div class="app-verdict">
+                  <span>Go/no-go advies</span>
+                  <strong>Go</strong>
+                  <p>Sterke match op de percelen beheer en detachering. Omzeteis en certificering worden aantoonbaar gehaald.</p>
+                </div>
+                <div class="app-actions">
+                  <span class="btn btn-primary btn-xs">Start inschrijving</span>
+                  <span class="btn btn-ghost btn-xs">Eisenmatrix</span>
+                </div>
+              </aside>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Floating elements -->
-      <div class="float-card float-1">
-        <div class="fc-icon fc-green">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- RESULTS -->
+    <section class="strip" aria-label="Sectoren">
+      <div class="container">
+        <p class="strip-label">Ingezet bij inschrijvingen in onder meer</p>
+        <ul class="strip-list">
+          <li>Bouw &amp; infra</li>
+          <li>Zorg &amp; welzijn</li>
+          <li>ICT &amp; software</li>
+          <li>Facilitaire diensten</li>
+          <li>Advies &amp; inhuur</li>
+          <li>Mobiliteit &amp; vervoer</li>
+          <li>Groen &amp; openbare ruimte</li>
+          <li>Energie &amp; installatie</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- WERKWIJZE -->
+    <section class="section section-grid section-tint-blue section-photo" id="werkwijze">
+      <div class="section-photo-img" aria-hidden="true"></div>
+      <div class="section-photo-veil" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head section-head-center">
+          <p class="eyebrow">Werkwijze</p>
+          <h2>Vijf stappen, één doorlopend proces</h2>
+          <p class="section-sub">BidMind volgt de manier waarop goede tenderteams al werken. Elke stap wordt door een eigen AI-agent voorbereid en door uw team beoordeeld.</p>
         </div>
-        <div>
-          <div class="fc-title">Sectie goedgekeurd</div>
-          <div class="fc-sub">Plan van Aanpak · zojuist</div>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">01</span>
+            <h3>Signaleren</h3>
+            <p>Dagelijkse scan van TenderNed, TED en andere publicatieplatforms op basis van uw profiel, CPV-codes en regio. Elk signaal krijgt een matchscore.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">02</span>
+            <h3>Analyseren</h3>
+            <p>Alle aanbestedingsstukken worden gelezen en omgezet in een eisenmatrix, gunningscriteria, planning en een lijst met risico's en onduidelijkheden.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <h3>Go/no-go</h3>
+            <p>Een onderbouwd advies binnen een dag: past deze opdracht bij uw organisatie, referenties en capaciteit? Inclusief voorstel voor vragen in de nota van inlichtingen.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">04</span>
+            <h3>Schrijven</h3>
+            <p>Concepten voor plan van aanpak, kwaliteitsplannen en open vragen, geschreven vanuit uw kennisbank en in uw eigen schrijfprofiel. Uw team stuurt bij en vult aan.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">05</span>
+            <h3>Reviewen</h3>
+            <p>Controle op volledigheid, consistentie en aansluiting op de gunningscriteria, met een verwachte score per onderdeel. Daarna exporteren en indienen.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FUNCTIES -->
+    <section class="section section-tint-soft section-photo" id="functies">
+      <div class="section-photo-img" aria-hidden="true"></div>
+      <div class="section-photo-veil" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Functies</p>
+          <h2>Alles wat een tenderteam nodig heeft, in één omgeving</h2>
+          <p class="section-sub">Signaleren, analyseren, schrijven, reviewen en beheren in één omgeving, met uw kennisbank als gedeelde basis voor het hele team.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+            <h3>Signalering</h3>
+            <p>Automatische monitoring van publicaties met matchscore, zodat u direct ziet welke aanbestedingen aandacht verdienen.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
+            <h3>Documentanalyse</h3>
+            <p>Eisenmatrix, gunningscriteria, planning en risico's uit alle stukken, inclusief bijlagen en nota's van inlichtingen.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></div>
+            <h3>Go/no-go advies</h3>
+            <p>Score op geschiktheid, kans en risico, onderbouwd met uw eerdere inschrijvingen en referenties.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+            <h3>Schrijfassistent in huisstijl</h3>
+            <p>Concepten in uw eigen toon en structuur, op basis van een schrijfprofiel dat tijdens de onboarding wordt ingericht.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <h3>Kennisbank</h3>
+            <p>Eerdere inschrijvingen, referenties, cv's, certificaten en beleidsdocumenten, doorzoekbaar en altijd actueel.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <h3>Review en compliance-check</h3>
+            <p>Elke eis afgevinkt, elk criterium beoordeeld met een verwachte score. Vormfouten worden gevonden vóór indiening.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+            <h3>Beheer van inschrijvingen</h3>
+            <p>Status, deadlines, documenten en taken per inschrijving. Iedereen in het team ziet wat er speelt en wie wat doet.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg></div>
+            <h3>Rapportage</h3>
+            <p>Hitrate, doorlooptijd, uren en scores per sector, opdrachtgever en periode. Inzicht voor directie en tendermanager.</p>
+          </article>
         </div>
       </div>
-      <div class="float-card float-2">
-        <div class="fc-icon fc-indigo">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v3M7 10v3M1 7h3M10 7h3M3 3l2 2M9 9l2 2M3 11l2-2M9 5l2-2" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </section>
+
+    <!-- CASES -->
+    <section class="section section-tint-diag section-photo" id="cases">
+      <div class="section-photo-img" aria-hidden="true"></div>
+      <div class="section-photo-veil" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Cases</p>
+          <h2>Hoe organisaties BidMind inzetten</h2>
+          <p class="section-sub">Vier inschrijfteams uit verschillende sectoren, met de situatie waar ze mee begonnen en wat er in het eerste jaar veranderde.</p>
         </div>
-        <div>
-          <div class="fc-title">AI klaar</div>
-          <div class="fc-sub">Projectorganisatie &amp; verantwoordelijkheden gegenereerd</div>
+
+        <div class="cases">
+
+          <article class="case">
+            <div class="case-media">
+              <img src="img/case-facilitair.jpg" alt="Modern kantoorinterieur" loading="lazy" />
+              <span class="chip chip-glass">Facilitaire dienstverlening</span>
+              <h3 class="case-media-title">Schoonmaak- en cateringbedrijf, Zuid-Holland</h3>
+            </div>
+            <div class="case-content">
+              <p class="case-intro">Ruim tien inschrijvingen per jaar met een klein tenderteam. De hitrate bleef achter bij de ambitie en de laatste week voor de deadline betekende structureel avondwerk.</p>
+            <div class="case-body">
+              <div class="case-col">
+                <h4>Aanpak</h4>
+                <ul>
+                  <li>Kennisbank gevuld met eerdere inschrijvingen, referenties en certificaten</li>
+                  <li>Signalering op CPV-codes voor schoonmaak, catering en receptie in vier provincies</li>
+                  <li>Go/no-go binnen een dag, met een vaste besliskaart voor directie en tenderteam</li>
+                </ul>
+              </div>
+              <div class="case-col">
+                <h4>Resultaat na twaalf maanden</h4>
+                <ul>
+                  <li>Duidelijk hogere hitrate binnen het eerste jaar</li>
+                  <li>Aanzienlijk minder uren per inschrijving</li>
+                  <li>Meer inschrijvingen per kwartaal met hetzelfde team</li>
+                </ul>
+              </div>
+            </div>
+            <blockquote class="case-quote">
+              <p>"We kiezen nu bewust welke aanbestedingen we oppakken en winnen vaker als we meedoen. De laatste week voor de deadline is eindelijk rustig."</p>
+              <footer>Commercieel directeur</footer>
+            </blockquote>
+            </div>
+          </article>
+
+          <article class="case">
+            <div class="case-media">
+              <img src="img/case-ict.jpg" alt="Ontwikkelaar achter meerdere schermen" loading="lazy" />
+              <span class="chip chip-glass">ICT &amp; software</span>
+              <h3 class="case-media-title">IT-dienstverlener voor overheid en semi-overheid</h3>
+            </div>
+            <div class="case-content">
+              <p class="case-intro">Raamovereenkomsten bij provincies en uitvoeringsorganisaties met lange eisenlijsten en veel reviewrondes. Een eerdere uitsluiting op een vormfout was de aanleiding om het proces anders in te richten.</p>
+            <div class="case-body">
+              <div class="case-col">
+                <h4>Aanpak</h4>
+                <ul>
+                  <li>Eisenmatrix automatisch uit de stukken, inclusief bijlagen en nota's van inlichtingen</li>
+                  <li>Compliance-check als verplichte stap vóór indiening</li>
+                  <li>Schrijfprofiel ingericht op de huisstijl en de toon van de salesorganisatie</li>
+                </ul>
+              </div>
+              <div class="case-col">
+                <h4>Resultaat na twaalf maanden</h4>
+                <ul>
+                  <li>Alle inschrijvingen volledig en geldig ingediend</li>
+                  <li>Aanzienlijk kortere reviewrondes</li>
+                  <li>Meerdere inschrijvingen tegelijk met hetzelfde team</li>
+                </ul>
+              </div>
+            </div>
+            <blockquote class="case-quote">
+              <p>"De eisenmatrix alleen al scheelt ons dagen. En we weten nu vóór indiening waar we nog punten kunnen winnen."</p>
+              <footer>Bidmanager</footer>
+            </blockquote>
+            </div>
+          </article>
+
+          <article class="case">
+            <div class="case-media">
+              <img src="img/case-zorg.jpg" alt="Zorgprofessional met telefoon" loading="lazy" />
+              <span class="chip chip-glass">Zorg &amp; welzijn</span>
+              <h3 class="case-media-title">Zorgorganisatie voor thuiszorg en begeleiding, actief in meerdere gemeenten</h3>
+            </div>
+            <div class="case-content">
+              <p class="case-intro">Wmo- en Jeugdwetprocedures met veel overlap, maar telkens net andere eisen. Teksten uit eerdere rondes stonden verspreid over mailboxen en netwerkschijven.</p>
+            <div class="case-body">
+              <div class="case-col">
+                <h4>Aanpak</h4>
+                <ul>
+                  <li>Centrale kennisbank met kwaliteitsbeleid, methodieken en eerdere antwoorden per gemeente</li>
+                  <li>Hergebruik en actualisatie van bewezen teksten per gemeente</li>
+                  <li>Deadlines en taken per procedure, met de kwaliteitsmanager als regisseur</li>
+                </ul>
+              </div>
+              <div class="case-col">
+                <h4>Resultaat na twaalf maanden</h4>
+                <ul>
+                  <li>Eén kwaliteitsmanager beheert alle procedures naast het reguliere werk</li>
+                  <li>Aanzienlijk kortere doorlooptijd per inschrijving</li>
+                  <li>Consistent hoge beoordelingen op de open vragen</li>
+                </ul>
+              </div>
+            </div>
+            <blockquote class="case-quote">
+              <p>"Onze antwoorden zijn consistent geworden. Wat we in de ene gemeente beloven, klopt met wat we in de andere schrijven."</p>
+              <footer>Manager kwaliteit en beleid</footer>
+            </blockquote>
+            </div>
+          </article>
+
+          <article class="case">
+            <div class="case-media">
+              <img src="img/case-infra.jpg" alt="Bouwplaats met medewerkers" loading="lazy" />
+              <span class="chip chip-glass">Bouw &amp; infra</span>
+              <h3 class="case-media-title">Aannemer in wegen, riolering en openbare ruimte</h3>
+            </div>
+            <div class="case-content">
+              <p class="case-intro">Inschrijvingen op beste prijs-kwaliteitverhouding waarbij het plan van aanpak het verschil maakt. De tendermanager schreef alles zelf en wilde meer tijd voor strategie.</p>
+            <div class="case-body">
+              <div class="case-col">
+                <h4>Aanpak</h4>
+                <ul>
+                  <li>Analyse van gunningscriteria met een verwachte score per subcriterium</li>
+                  <li>Eerste concept plan van aanpak binnen enkele dagen, uitgewerkt vanuit eerdere winnende plannen</li>
+                  <li>Reviewrondes met projectleiders rechtstreeks in BidMind</li>
+                </ul>
+              </div>
+              <div class="case-col">
+                <h4>Resultaat na twaalf maanden</h4>
+                <ul>
+                  <li>Hogere kwaliteitsscores dan het jaar ervoor</li>
+                  <li>Meer gewonnen inschrijvingen in het eerste halfjaar</li>
+                  <li>Tendermanager heeft weer tijd voor selectie en strategie</li>
+                </ul>
+              </div>
+            </div>
+            <blockquote class="case-quote">
+              <p>"Het eerste concept ligt er nu binnen enkele dagen. Daardoor hebben we tijd over om het plan écht scherp te maken met de mensen die het werk gaan doen."</p>
+              <footer>Tendermanager</footer>
+            </blockquote>
+            </div>
+          </article>
+
         </div>
       </div>
-      <div class="float-card float-3">
-        <div class="fc-score">94<span>%</span></div>
-        <div>
-          <div class="fc-title">Kwaliteitsscore</div>
-          <div class="fc-sub">Boven gemiddelde</div>
+    </section>
+
+    <!-- SECTOREN -->
+    <section class="section sectors-section" id="sectoren">
+      <div class="sectors-bg" aria-hidden="true"></div>
+      <div class="sectors-overlay" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head section-head-light">
+          <p class="eyebrow">Sectoren</p>
+          <h2>Voor iedere organisatie die inschrijft op aanbestedingen</h2>
+          <p class="section-sub">De procedure verschilt per sector, het proces niet. BidMind wordt tijdens de onboarding ingericht op uw markt, terminologie en opdrachtgevers.</p>
+        </div>
+
+        <div class="sectors">
+          <article class="sector">
+            <div class="sector-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg></div>
+            <h3>Bouw &amp; infra</h3>
+            <p>Plannen van aanpak, EMVI en BPKV, UAV-GC en bouwteams. Referentie-eisen en certificeringen direct uit de kennisbank.</p>
+          </article>
+          <article class="sector">
+            <div class="sector-icon"><svg viewBox="0 0 24 24"><path d="M19.5 12.6 12 20l-7.5-7.4a5 5 0 1 1 7.5-6.6 5 5 0 1 1 7.5 6.6z"/></svg></div>
+            <h3>Zorg &amp; welzijn</h3>
+            <p>Wmo, Jeugdwet, Wlz en open house-procedures bij gemeenten en zorgkantoren. Consistente kwaliteitsantwoorden per regio.</p>
+          </article>
+          <article class="sector">
+            <div class="sector-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+            <h3>ICT &amp; software</h3>
+            <p>Raamovereenkomsten, SaaS-aanbestedingen en detachering. Lange eisenlijsten, informatiebeveiliging en verwerkersafspraken.</p>
+          </article>
+          <article class="sector">
+            <div class="sector-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></svg></div>
+            <h3>Facilitaire diensten</h3>
+            <p>Schoonmaak, catering, beveiliging en receptie. Veel inschrijvingen per jaar met hoge eisen aan social return en duurzaamheid.</p>
+          </article>
+          <article class="sector">
+            <div class="sector-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+            <h3>Advies &amp; inhuur</h3>
+            <p>Adviesbureaus, detacheerders en dynamische aankoopsystemen. Snel cv's en referenties matchen op de uitvraag.</p>
+          </article>
+          <article class="sector">
+            <div class="sector-icon"><svg viewBox="0 0 24 24"><path d="M3 13l2-6h12l3 6v5H3z"/><circle cx="7.5" cy="18" r="2"/><circle cx="16.5" cy="18" r="2"/><path d="M3 13h18"/></svg></div>
+            <h3>Mobiliteit &amp; vervoer</h3>
+            <p>Leerlingenvervoer, doelgroepenvervoer en logistiek. Ritplanning, materieel en kwaliteitsbeheersing goed onderbouwd.</p>
+          </article>
+          <article class="sector">
+            <div class="sector-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12"/><path d="M12 12c-4 0-7-3-7-7 4 0 7 3 7 7zM12 15c0-4 3-7 7-7 0 4-3 7-7 7z"/></svg></div>
+            <h3>Groen &amp; openbare ruimte</h3>
+            <p>Groenonderhoud, beheer en reiniging. Beeldkwaliteit, planning en duurzaamheid in heldere plannen.</p>
+          </article>
+          <article class="sector">
+            <div class="sector-icon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <h3>Energie &amp; installatie</h3>
+            <p>Installatietechniek, verduurzaming en onderhoudscontracten. Technische eisen en prestatie-indicatoren afgedekt.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- LOGOS -->
-  <section class="logos-bar">
-    <div class="container">
-      <p class="logos-label">Vertrouwd door tenderteams in infra, bouw &amp; technische dienstverlening</p>
-      <div class="logos-row">
-        <div class="logo-pill">Infra aannemer</div>
-        <div class="logo-pill">Bouwbedrijf</div>
-        <div class="logo-pill">Technisch dienstverlener</div>
-        <div class="logo-pill">Projectorganisatie</div>
-        <div class="logo-pill">Tenderadviesbureau</div>
+    <!-- VERTROUWEN -->
+    <section class="section section-tint-dots section-photo" id="vertrouwen">
+      <div class="section-photo-img" aria-hidden="true"></div>
+      <div class="section-photo-veil" aria-hidden="true"></div>
+      <div class="container trust-grid">
+        <div class="trust-copy">
+          <p class="eyebrow">Beveiliging en beheer</p>
+          <h2>Uw aanbestedingsdossiers blijven van u</h2>
+          <p class="section-sub">Inschrijvingen bevatten prijzen, referenties en bedrijfsinformatie. BidMind is daarop ingericht: gescheiden dataomgevingen, hosting in de EU en heldere afspraken over verwerking.</p>
+          <a href="#contact" class="btn btn-ghost">Vraag de beveiligingsbijlage op</a>
+        </div>
+        <ul class="trust-list">
+          <li><strong>EU-hosting</strong><span>Alle data en verwerking binnen de Europese Unie.</span></li>
+          <li><strong>Verwerkersovereenkomst</strong><span>Standaard onderdeel van het abonnement, conform AVG.</span></li>
+          <li><strong>Gescheiden dataomgeving</strong><span>Uw kennisbank en dossiers zijn strikt gescheiden van andere klanten.</span></li>
+          <li><strong>Uw data blijft van u</strong><span>Uw documenten worden uitsluitend gebruikt voor uw eigen inschrijvingen.</span></li>
+          <li><strong>SSO en rollen</strong><span>Inloggen via uw eigen identiteitsprovider, rechten per afdeling en per dossier.</span></li>
+          <li><strong>Audit log</strong><span>Wie heeft wat wanneer gewijzigd, per inschrijving terug te zien.</span></li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section hiw-section" id="how-it-works">
-    <div class="section-bg-blob hiw-blob"></div>
-    <div class="container">
-      <div class="section-label">Werkwijze</div>
-      <h2 class="section-h2">Van document naar aanbieding<br />in vier stappen</h2>
-      <p class="section-sub">Geen leerdrempel. Geen nieuwe manier van werken. BidMind past in jouw bestaande workflow en maakt elk onderdeel sneller.</p>
+    <!-- PRIJS -->
+    <section class="section pricing-section section-photo" id="prijs">
+      <div class="section-photo-img" aria-hidden="true"></div>
+      <div class="section-photo-veil" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head section-head-center">
+          <p class="eyebrow">Abonnement</p>
+          <h2>Eén abonnement. Alles inbegrepen.</h2>
+          <p class="section-sub">Eén vaste prijs voor het volledige platform, de onboarding en een vast aanspreekpunt. Zo weet u vooraf precies waar u aan toe bent.</p>
+        </div>
 
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-num">01</div>
-          <div class="step-icon-wrap">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-              <path d="M9 3.5h8l5.5 5.5v12.5a1.8 1.8 0 0 1-1.8 1.8H9a1.8 1.8 0 0 1-1.8-1.8V5.3A1.8 1.8 0 0 1 9 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-              <path d="M17 3.5V9h5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10 13h8M10 16.8h6.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              <circle cx="19.8" cy="19.8" r="2.6" fill="currentColor" opacity="0.14"/>
-              <path d="M18.8 19.8l.7.7 1.4-1.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <div class="plan">
+          <div class="plan-main">
+            <span class="plan-badge">Alles inbegrepen</span>
+            <div class="plan-price">
+              <span class="plan-amount">€ 899</span>
+              <span class="plan-per">per maand</span>
+            </div>
+            <p class="plan-terms">Inclusief 5 gebruikers · € 99 per extra gebruiker per maand<br />Jaarcontract, daarna maandelijks opzegbaar · Prijzen exclusief btw</p>
+            <a href="#contact" class="btn btn-primary btn-lg plan-cta">Demo plannen</a>
+            <p class="plan-note">Eén extra gewonnen opdracht per jaar betaalt het abonnement doorgaans ruimschoots terug. We rekenen het graag voor u door.</p>
           </div>
-          <h3>Upload documenten</h3>
-          <p>Sleep aanbestedingsdocumenten in BidMind. De AI analyseert direct alle eisen, gunningscriteria en risico's.</p>
-          <div class="step-tag">Automatische analyse</div>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">02</div>
-          <div class="step-icon-wrap">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-              <circle cx="13" cy="13" r="9.5" stroke="currentColor" stroke-width="1.7"/>
-              <circle cx="13" cy="13" r="5.1" fill="currentColor" opacity="0.12"/>
-              <path d="M13 8.6v8.8M8.6 13h8.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M5.9 8.8 7.4 10M20.1 17 18.6 15.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.85"/>
-            </svg>
-          </div>
-          <h3>Genereer NVI-vragen</h3>
-          <p>BidMind stelt automatisch strategische inlichtingenvragen voor, geprioriteerd op relevantie en impact.</p>
-          <div class="step-tag">Vraagstrategie</div>
-        </div>
-
-        <div class="step-card step-card-featured">
-          <div class="step-num">03</div>
-          <div class="step-icon-wrap step-icon-white">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-              <rect x="4.2" y="4.2" width="17.6" height="17.6" rx="4.3" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M8.4 9.2h9.3M8.4 13h6.8M8.4 16.8h8.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-              <circle cx="19.8" cy="19.8" r="3.2" fill="white" opacity="0.26"/>
-              <path d="M18.5 19.8l1 1 2-2" stroke="white" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>Schrijf secties met AI</h3>
-          <p>Genereer volledige, onderbouwde aanbiedingsteksten: Plan van Aanpak, Kwaliteitsborging, Referenties, projectorganisatie &amp; verantwoordelijkheden en meer.</p>
-          <div class="step-tag step-tag-white">Kernfunctie</div>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">04</div>
-          <div class="step-icon-wrap">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-              <path d="M6.5 15.8v4.5a2.2 2.2 0 0 0 2.2 2.2h8.6a2.2 2.2 0 0 0 2.2-2.2v-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-              <path d="M13 4.5v11.2M9.3 12.8 13 16.6l3.7-3.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M7.5 20.8h11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.75"/>
-            </svg>
-          </div>
-          <h3>Exporteer als Word</h3>
-          <p>Download de complete aanbieding als Word-document. Klaar voor eindredactie, opmaak en indiening.</p>
-          <div class="step-tag">Direct bruikbaar</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="section features-section" id="features">
-    <div class="container">
-      <div class="section-label">Kernfuncties</div>
-      <h2 class="section-h2">Alles wat je nodig hebt<br />voor een winnende inschrijving</h2>
-      <p class="section-sub">Één platform voor het volledige tenderproces — van eerste analyse tot exportklaar document.</p>
-
-      <div class="feat-grid">
-        <!-- Large feature -->
-        <div class="feat-main">
-          <div class="feat-main-content">
-            <div class="feat-badge">Populairste functie</div>
-            <h3>AI-sectiegenerator</h3>
-            <p>Aanbestedingen winnen begint met de juiste woorden op de juiste plek. BidMind schrijft elke sectie op basis van het bestek, jouw bedrijfsprofiel en de gunningscriteria — zodat je inschrijving precies aansluit op wat de opdrachtgever beoordeelt.</p>
-            <ul class="feat-list">
-              <li>Plan van Aanpak</li>
-              <li>Kwaliteitsborging &amp; V&amp;G-plan</li>
-              <li>Referenties &amp; relevante projectervaring</li>
-              <li>Projectorganisatie &amp; verantwoordelijkheden</li>
-              <li>Methodiek, werkwijze &amp; tooling</li>
+          <div class="plan-features">
+            <h3>Inbegrepen</h3>
+            <ul class="plan-list">
+              <li>Alle AI-agents: signaleren, analyseren, go/no-go, schrijven en reviewen</li>
+              <li>Onbeperkt aantal aanbestedingsanalyses (fair use)</li>
+              <li>Eigen kennisbank en schrijfprofiel in uw huisstijl</li>
+              <li>Beheer van alle inschrijvingen: status, deadlines, documenten en taken</li>
+              <li>Rapportage over hitrate, doorlooptijd en scores</li>
+              <li>Onboarding en inrichting van de kennisbank</li>
+              <li>SSO, audit log, rollen per afdeling en gescheiden dataomgeving</li>
+              <li>EU-hosting en verwerkersovereenkomst</li>
+              <li>Vast aanspreekpunt, reactie binnen vier werkuren, kwartaalgesprek</li>
+              <li>Alle updates en nieuwe functies</li>
             </ul>
-            <a href="#contact" class="feat-link">Vraag een demo →</a>
-          </div>
-          <div class="feat-main-visual">
-            <div class="ai-gen-card">
-              <div class="agc-header">
-                <div class="agc-dot agc-dot-indigo"></div>
-                <span>AI schrijft: <em>Plan van Aanpak</em></span>
-                <div class="agc-spinner"></div>
-              </div>
-              <div class="agc-text">
-                <p class="agc-paragraph agc-typing" data-text="Voor deze aanbesteding richten wij ons op een gefaseerde implementatie met een duidelijke opstartfase, wekelijkse voortgangsrapportages en aantoonbare kwaliteitsborging per mijlpaal."></p>
-                <p class="agc-paragraph agc-typing" data-text="Door onze ervaring met vergelijkbare trajecten kunnen we de doorlooptijd met 20% verkorten, zonder concessies te doen aan veiligheid, documentatie en overdraagbaarheid."></p>
-                <p class="agc-keypoint agc-typing" data-text="Kernbelofte: oplevering binnen planning, met meetbare kwaliteit en een vast aanspreekpunt voor de opdrachtgever."></p>
-                <div class="agc-cursor" aria-hidden="true"></div>
-              </div>
-              <div class="agc-footer">
-                <span class="agc-words">842 woorden</span>
-                <span class="agc-quality">Kwaliteit: <strong>Uitstekend</strong></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Feature cards grid -->
-        <div class="feat-cards">
-          <div class="feat-card">
-            <div class="fc-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h4>Tenderdossier</h4>
-            <p>Centrale plek met alle documenten, vragen, secties en activiteiten per tender.</p>
-          </div>
-          <div class="feat-card">
-            <div class="fc-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M11 2L2 7l9 5 9-5-9-5zM2 17l9 5 9-5M2 12l9 5 9-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h4>Documentanalyse</h4>
-            <p>AI-gegenereerde samenvattingen, eisen, gunningscriteria en risico's direct na upload.</p>
-          </div>
-          <div class="feat-card">
-            <div class="fc-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h4>NVI-vraaggeneratie</h4>
-            <p>Strategische inlichtingenvragen automatisch voorgesteld, geprioriteerd op impact.</p>
-          </div>
-          <div class="feat-card">
-            <div class="fc-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h4>Statusworkflow</h4>
-            <p>Beheer secties van concept naar goedgekeurd. Voortgangsbalk, woordtelling en teamstatus.</p>
-          </div>
-          <div class="feat-card">
-            <div class="fc-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <rect x="3" y="3" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.7"/>
-                <path d="M3 9h16M9 21V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h4>Visuele verrijking</h4>
-            <p>AI-gegenereerde illustraties van workflows en processen die de aanbieding sterker maken.</p>
-          </div>
-          <div class="feat-card">
-            <div class="fc-icon-wrap">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h4>Bedrijfscontext</h4>
-            <p>Voed BidMind met jouw organisatiedata — voor AI-output die klinkt alsof jij het zelf geschreven hebt.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- BENEFITS / VALUE PROP -->
-  <section class="section benefits-section" id="benefits">
-    <div class="section-bg-blob bene-blob"></div>
-    <div class="container">
-      <div class="benefits-layout">
-        <div class="bene-left">
-          <div class="section-label">Waardepropositie</div>
-          <h2 class="section-h2 bene-h2">Minder repetitief werk.<br />Meer winnende tenders.</h2>
-          <p class="bene-intro">Je team besteedt uren aan handmatig leeswerk, samenvatten en schrijven. BidMind neemt dit over — zodat jij je focust op strategie en kwaliteit.</p>
-
-          <div class="bene-items">
-            <div class="bene-item reveal">
-              <div class="bene-icon bene-icon-green">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9l4 4 8-8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="bene-text">
-                <strong>70% minder schrijftijd</strong>
-                <p>Van leeg document naar uitgewerkte conceptsectie in minuten, niet uren.</p>
-              </div>
-            </div>
-            <div class="bene-item reveal">
-              <div class="bene-icon bene-icon-blue">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l2.5 5 5.5.8-4 3.9.9 5.5L9 14.5 4.1 17.2l.9-5.5L1 7.8l5.5-.8L9 2z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="bene-text">
-                <strong>Consistente kwaliteit, elke tender</strong>
-                <p>Dezelfde hoge standaard, ongeacht teamsamenstelling of deadline druk.</p>
-              </div>
-            </div>
-            <div class="bene-item reveal">
-              <div class="bene-icon bene-icon-violet">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1v4M9 13v4M1 9h4M13 9h4M3.2 3.2l2.8 2.8M12 12l2.8 2.8M3.2 14.8L6 12M12 6l2.8-2.8" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </div>
-              <div class="bene-text">
-                <strong>AI die jouw organisatie kent</strong>
-                <p>Contextbewuste output afgestemd op jouw stijl, expertise en eerdere tenders.</p>
-              </div>
-            </div>
-            <div class="bene-item reveal">
-              <div class="bene-icon bene-icon-amber">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16 6H2M12 2l4 4-4 4M6 10l-4 4 4 4M2 14h16" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="bene-text">
-                <strong>Schaalbaar tenderproces</strong>
-                <p>Doe meer tenders tegelijk zonder evenredig meer mensen nodig te hebben.</p>
-              </div>
-            </div>
-          </div>
+    <!-- FAQ -->
+    <section class="section section-tint-teal section-photo" id="faq">
+      <div class="section-photo-img" aria-hidden="true"></div>
+      <div class="section-photo-veil" aria-hidden="true"></div>
+      <div class="container faq-grid">
+        <div class="faq-intro">
+          <p class="eyebrow">Veelgestelde vragen</p>
+          <h2>Wat u wilt weten voordat u begint</h2>
+          <p class="section-sub">Andere vraag? Mail naar <a href="mailto:info@bidmind.nl">info@bidmind.nl</a>, we reageren binnen één werkdag.</p>
         </div>
-
-        <div class="bene-right">
-          <div class="bene-visual">
-            <div class="bv-card bv-card-main">
-              <div class="bvc-header">
-                <span class="bvc-title">Tijdsbesparing per tender</span>
-                <span class="bvc-period">Gemiddeld</span>
-              </div>
-              <div class="bvc-chart">
-                <div class="bvc-bar-group">
-                  <div class="bvc-bar-label">Documentanalyse</div>
-                  <div class="bvc-bars">
-                    <div class="bvc-bar-before" style="width:100%"><span>8 uur</span></div>
-                    <div class="bvc-bar-after" style="width:12.5%"><span>1 uur</span></div>
-                  </div>
-                </div>
-                <div class="bvc-bar-group">
-                  <div class="bvc-bar-label">Vraagstelling</div>
-                  <div class="bvc-bars">
-                    <div class="bvc-bar-before" style="width:62.5%"><span>5 uur</span></div>
-                    <div class="bvc-bar-after" style="width:12.5%"><span>1 uur</span></div>
-                  </div>
-                </div>
-                <div class="bvc-bar-group">
-                  <div class="bvc-bar-label">Secties schrijven</div>
-                  <div class="bvc-bars">
-                    <div class="bvc-bar-before" style="width:100%"><span>24 uur</span></div>
-                    <div class="bvc-bar-after" style="width:25%"><span>6 uur</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="bvc-legend">
-                <span class="leg-before">Zonder BidMind</span>
-                <span class="leg-after">Met BidMind</span>
-              </div>
-            </div>
-            <div class="bv-card bv-card-stat bv-float-1">
-              <div class="bvs-number">3×</div>
-              <div class="bvs-label">sneller naar<br/>concept aanbieding</div>
-            </div>
-            <div class="bv-card bv-card-stat bv-float-2">
-              <div class="bvs-number bvs-green">↑32%</div>
-              <div class="bvs-label">hogere kwaliteitsscore<br/>op inschrijvingen</div>
-            </div>
-          </div>
+        <div class="faq">
+          <details>
+            <summary>Werkt BidMind ook voor onze sector?</summary>
+            <p>Ja. BidMind is opgebouwd rond het inschrijfproces en werkt daardoor in elke markt. Tijdens de onboarding wordt het platform ingericht op uw sector, terminologie, opdrachtgevers en eerdere inschrijvingen. Zie de sectoren hierboven voor voorbeelden.</p>
+          </details>
+          <details>
+            <summary>Waar komen de signaleringen vandaan?</summary>
+            <p>BidMind scant dagelijks openbare publicatieplatforms zoals TenderNed en TED. U stelt een profiel in met CPV-codes, regio's, opdrachtgevers en drempelwaarden. Elk signaal krijgt een matchscore, zodat u alleen leest wat relevant is.</p>
+          </details>
+          <details>
+            <summary>Wat betekent BidMind voor onze tenderschrijver of bidmanager?</summary>
+            <p>BidMind versterkt uw team. Het leeswerk, de eerste concepten en de controles worden voorbereid, zodat uw tenderschrijver of bidmanager zich kan richten op de keuzes, de strategie en het eindoordeel. In de praktijk krijgen tendermanagers tijd terug voor selectie en strategie.</p>
+          </details>
+          <details>
+            <summary>Wat gebeurt er met onze documenten?</summary>
+            <p>Uw documenten staan in een gescheiden omgeving op servers in de EU en worden uitsluitend gebruikt voor uw eigen inschrijvingen. Een verwerkersovereenkomst is standaard onderdeel van het abonnement. Op verzoek sturen we de beveiligingsbijlage.</p>
+          </details>
+          <details>
+            <summary>Hoe lang duurt de onboarding?</summary>
+            <p>Gemiddeld twee tot drie weken. We richten samen de kennisbank in met eerdere inschrijvingen, referenties en beleidsdocumenten, stellen het schrijfprofiel af op uw huisstijl en trainen het team. De eerste inschrijving begeleiden we van begin tot eind.</p>
+          </details>
+          <details>
+            <summary>Wat is de contractvorm?</summary>
+            <p>Een jaarcontract voor € 899 per maand, inclusief vijf gebruikers en alle functies. Extra gebruikers kosten € 99 per maand. Na het eerste jaar is het abonnement maandelijks opzegbaar.</p>
+          </details>
+          <details>
+            <summary>Kunnen we eerst zien hoe het werkt met een echte aanbesteding?</summary>
+            <p>Ja. In de demo werken we met een recente of lopende aanbesteding uit uw sector, zodat u ziet wat de analyse, het go/no-go advies en het eerste concept concreet opleveren.</p>
+          </details>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="section testimonials-section" id="testimonials">
-    <div class="container">
-      <div class="section-label">Klanten aan het woord</div>
-      <h2 class="section-h2">Teams die BidMind gebruiken<br />winnen vaker</h2>
-
-      <div class="testi-grid">
-        <div class="testi-card testi-featured">
-          <div class="testi-stars">★★★★★</div>
-          <blockquote>"BidMind heeft ons tenderproces volledig veranderd. We schrijven secties in een fractie van de tijd, met hogere kwaliteit. Onze hitrate is aantoonbaar gestegen."</blockquote>
-          <div class="testi-author">
-            <div class="testi-av testi-av-1">MV</div>
-            <div>
-              <div class="testi-name">Mark van der Berg</div>
-              <div class="testi-role">Tendermanager · Infra aannemer</div>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <blockquote>"De NVI-vraaggeneratie alleen al betaalt de tool terug. We missen geen enkele kritieke vraag meer en de kwaliteit van ons bestek-begrip is enorm verbeterd."</blockquote>
-          <div class="testi-author">
-            <div class="testi-av testi-av-2">SR</div>
-            <div>
-              <div class="testi-name">Sophie Rijnders</div>
-              <div class="testi-role">Inschrijfspecialist · Tenderadviesbureau</div>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <blockquote>"Eindelijk één plek voor het hele team. Iedereen ziet de voortgang, de AI-output is verrassend goed en de Word-export scheelt ons echt veel tijd."</blockquote>
-          <div class="testi-author">
-            <div class="testi-av testi-av-3">JK</div>
-            <div>
-              <div class="testi-name">Jasper Kruijt</div>
-              <div class="testi-role">Projectdirecteur · Projectorganisatie</div>
-            </div>
-          </div>
+    <!-- CTA BAND -->
+    <section class="cta-band" aria-labelledby="ctaTitle">
+      <div class="cta-bg" aria-hidden="true"></div>
+      <div class="cta-overlay" aria-hidden="true"></div>
+      <div class="container cta-inner">
+        <p class="eyebrow">Doorrekening op maat</p>
+        <h2 id="ctaTitle">Wat levert BidMind op voor uw inschrijvingen?</h2>
+        <p>Stuur ons het aantal inschrijvingen van vorig jaar en de gemiddelde doorlooptijd. We rekenen samen door wat een hogere hitrate en minder uren per inschrijving voor uw organisatie betekenen.</p>
+        <div class="cta-actions">
+          <a href="#contact" class="btn btn-light btn-lg">Plan een gesprek</a>
+          <a href="mailto:info@bidmind.nl" class="btn btn-outline-light btn-lg">Mail info@bidmind.nl</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOR WHO -->
-  <section class="section forwho-section" id="for-who">
-    <div class="section-bg-blob fw-blob"></div>
-    <div class="container">
-      <div class="section-label">Voor wie</div>
-      <h2 class="section-h2">Gebouwd voor iedereen<br />die aanbestedingen wint</h2>
-      <div class="fw-grid">
-        <div class="fw-card">
-          <div class="fw-num">01</div>
-          <div class="fw-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="9" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M5 26c0-4.97 4.03-9 9-9s9 4.03 9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Tendermanager</h3>
-          <p>Houd overzicht over meerdere tenders, volg teamvoortgang en stuur bij waar nodig.</p>
-          <ul>
-            <li>Voortgangsdashboard</li>
-            <li>Statusworkflow</li>
-            <li>Activiteitentijdlijn</li>
+    <!-- CONTACT -->
+    <section class="section section-tint-contact section-photo" id="contact">
+      <div class="section-photo-img" aria-hidden="true"></div>
+      <div class="section-photo-veil" aria-hidden="true"></div>
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">Contact</p>
+          <h2>Plan een demo of stel uw vraag</h2>
+          <p class="section-sub">Laat uw gegevens achter en we nemen binnen één werkdag contact op om een afspraak te plannen. Een demo duurt ongeveer 45 minuten en gaat over uw aanbestedingen.</p>
+
+          <dl class="contact-details">
+            <div>
+              <dt>E-mail</dt>
+              <dd><a href="mailto:info@bidmind.nl">info@bidmind.nl</a></dd>
+            </div>
+            <div>
+              <dt>Reactietijd</dt>
+              <dd>Binnen één werkdag</dd>
+            </div>
+            <div>
+              <dt>Organisatie</dt>
+              <dd>BidMind B.V., Nederland</dd>
+            </div>
+          </dl>
+
+          <ul class="contact-points">
+            <li>Demo met een aanbesteding uit uw eigen sector</li>
+            <li>Doorrekening op basis van uw inschrijvingen van vorig jaar</li>
+            <li>Vrijblijvend kennismaken</li>
           </ul>
         </div>
-        <div class="fw-card fw-card-main">
-          <div class="fw-badge">Meest gebruikt</div>
-          <div class="fw-num">02</div>
-          <div class="fw-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 26V8l6-4 6 4 6-4 6 4v18" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 26v-8h6v8M9 14h4M15 14h4M9 19h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Inschrijfteam</h3>
-          <p>Schrijf aanbiedingsteksten sneller dan ooit. AI die jouw context kent en secties op maat genereert.</p>
-          <ul>
-            <li>AI-sectiegenerator</li>
-            <li>NVI-vraaggeneratie</li>
-            <li>Visuele verrijking</li>
-            <li>Word-export</li>
-          </ul>
-        </div>
-        <div class="fw-card">
-          <div class="fw-num">03</div>
-          <div class="fw-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M9 14h10M9 10h7M9 18h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Calculator &amp; projectteam</h3>
-          <p>Lever inhoudelijke input en laat BidMind dit omzetten naar onderbouwde aanbiedingstekst.</p>
-          <ul>
-            <li>Documentanalyse</li>
-            <li>Bedrijfscontext</li>
-            <li>Referentiebeheer</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Demo / contact -->
-  <section class="cta-section" id="demo">
-    <div class="cta-bg">
-      <div class="cta-blob cta-blob-1"></div>
-      <div class="cta-blob cta-blob-2"></div>
-    </div>
-    <div class="container cta-inner">
-      <div class="cta-eyebrow">Demo aanvragen</div>
-      <h2 class="cta-h2">Ontdek BidMind in een persoonlijke demo</h2>
-      <p class="cta-p">Vul het formulier in — we nemen binnen één werkdag contact op om een afspraak te plannen.</p>
-
-      <div class="cta-contact" id="contact">
-        <div class="contact-panel contact-panel--in-cta">
+        <div class="contact-panel">
           <form class="contact-form" id="contactForm" action="/api/contact" method="post" novalidate>
             <input type="text" name="website" class="contact-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-            <div class="contact-field">
-              <label for="contactName">Naam</label>
-              <input type="text" id="contactName" name="name" required maxlength="120" autocomplete="name" placeholder="Je naam" />
+            <div class="form-row">
+              <div class="field">
+                <label for="contactName">Naam</label>
+                <input type="text" id="contactName" name="name" required maxlength="120" autocomplete="name" placeholder="Voor- en achternaam" />
+              </div>
+              <div class="field">
+                <label for="contactOrg">Organisatie</label>
+                <input type="text" id="contactOrg" name="organisation" maxlength="160" autocomplete="organization" placeholder="Bedrijfs- of organisatienaam" />
+              </div>
             </div>
-            <div class="contact-field">
-              <label for="contactEmail">E-mail</label>
-              <input type="email" id="contactEmail" name="email" required autocomplete="email" placeholder="je@bedrijf.nl" />
+            <div class="form-row">
+              <div class="field">
+                <label for="contactEmail">E-mail</label>
+                <input type="email" id="contactEmail" name="email" required autocomplete="email" placeholder="naam@organisatie.nl" />
+              </div>
+              <div class="field">
+                <label for="contactPhone">Telefoon <span class="optional">(optioneel)</span></label>
+                <input type="tel" id="contactPhone" name="phone" maxlength="40" autocomplete="tel" placeholder="06 12345678" />
+              </div>
             </div>
-            <div class="contact-field">
-              <label for="contactMessage">Je aanvraag</label>
-              <textarea id="contactMessage" name="message" required rows="5" maxlength="8000" placeholder="Bijv. gewenste periode, teamgrootte of een concrete tender waarbij je hulp zoekt"></textarea>
+            <div class="field">
+              <label for="contactMessage">Waar kunnen we u mee helpen?</label>
+              <textarea id="contactMessage" name="message" required rows="5" maxlength="8000" placeholder="Bijvoorbeeld: uw sector, het aantal inschrijvingen per jaar of een aanbesteding waar u nu aan werkt."></textarea>
             </div>
 
-            <button type="submit" class="contact-submit contact-submit--in-cta">Demo aanvragen</button>
+            <button type="submit" class="btn btn-primary btn-lg contact-submit">Demo aanvragen</button>
             <p class="contact-form-msg" id="contactFormMsg" role="status" aria-live="polite" hidden></p>
+            <p class="form-privacy">Uw gegevens worden alleen gebruikt om contact met u op te nemen.</p>
           </form>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="container footer-inner">
+    <div class="container footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo footer-logo">
-          <div class="logo-mark">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-              <rect x="2.5" y="2.5" width="17" height="17" rx="4.4" stroke="white" stroke-width="1.8"/>
-              <path d="M6.6 7.4h8.7M6.6 11h6.4M6.6 14.6h7.6" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-              <circle cx="16.7" cy="16.7" r="2.8" fill="white" opacity="0.25"/>
-              <path d="M15.6 16.7l.9.9 1.8-1.8" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <a href="#top" class="logo logo-light" aria-label="BidMind">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+              <rect x="2.5" y="2.5" width="17" height="17" rx="4" stroke="white" stroke-width="1.8"/>
+              <path d="M6.6 7.4h8.7M6.6 11h6.4M6.6 14.6h4.6" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M13.4 15.4l1.4 1.4 2.8-2.8" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-          </div>
-          BidMind
+          </span>
+          <span class="logo-text">BidMind</span>
         </a>
-        <p class="footer-tagline">AI voor tenderteams — sneller en consistenter inschrijven.</p>
-        <p class="footer-contact-mail">
-          <a href="mailto:info@bidmind.nl">info@bidmind.nl</a>
-        </p>
+        <p>Aanbestedingssoftware voor elke sector. Signaleren, analyseren, schrijven en reviewen in één platform.</p>
       </div>
-      <div class="footer-statement">
-        <p class="footer-strapline">Minder chaos rond je tender — meer structuur en een inschrijving om op te bouwen.</p>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#werkwijze">Werkwijze</a>
+        <a href="#functies">Functies</a>
+        <a href="#sectoren">Sectoren</a>
+        <a href="#vertrouwen">Beveiliging</a>
+        <a href="#prijs">Abonnement</a>
       </div>
-      <div class="footer-col footer-col-contact">
-        <div class="footer-contact-head">
-          <h5>Contact</h5>
-          <div class="footer-contact-actions">
-            <a href="#demo" class="footer-pill">Demo aanvragen</a>
-            <a href="#contact" class="footer-pill">Contactformulier</a>
-          </div>
-        </div>
+      <div class="footer-col">
+        <h4>Meer</h4>
+        <a href="#cases">Cases</a>
+        <a href="#faq">Veelgestelde vragen</a>
+        <a href="#contact">Demo plannen</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@bidmind.nl">info@bidmind.nl</a>
+        <span>BidMind B.V.</span>
+        <span>Nederland</span>
       </div>
     </div>
-    <div class="footer-bottom container">
-      <p>© 2025 BidMind B.V. · Nederland 🇳🇱</p>
-      <div class="footer-partner">
-        <span class="footer-partner-label">Een product van</span>
-        <a href="https://www.ai-group.nl" class="footer-pill footer-pill--partner" target="_blank" rel="noopener noreferrer">AI-Group</a>
-      </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year">2026</span> BidMind B.V. Alle rechten voorbehouden.</span>
+      <span>Prijzen exclusief btw.</span>
     </div>
   </footer>
 

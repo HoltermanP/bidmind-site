@@ -138,6 +138,8 @@ module.exports = async (req, res) => {
 
   let name = String(body.name || '').trim().replace(/\s+/g, ' ');
   const message = String(body.message || '').trim();
+  const organisation = String(body.organisation || '').trim().replace(/\s+/g, ' ').slice(0, 160);
+  const phone = String(body.phone || '').trim().replace(/\s+/g, ' ').slice(0, 40);
 
   if (!name || utf8len(name) > 120) {
     res.status(400).json({ ok: false, error: 'name' });
@@ -160,7 +162,10 @@ module.exports = async (req, res) => {
   const textBody =
     'Demo-aanvraag via de website.\r\n\r\n' +
     `Naam: ${name}\r\n` +
-    `E-mail: ${email}\r\n\r\n` +
+    (organisation ? `Organisatie: ${organisation}\r\n` : '') +
+    `E-mail: ${email}\r\n` +
+    (phone ? `Telefoon: ${phone}\r\n` : '') +
+    '\r\n' +
     'Aanvraag / bericht:\r\n' +
     `${message}\r\n\r\n` +
     `Tijdstip: ${new Date().toISOString().replace('T', ' ').slice(0, 19)} UTC\r\n` +

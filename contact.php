@@ -118,6 +118,13 @@ $utf8len = static function (string $s): int {
 
 $name = trim(preg_replace('/\s+/', ' ', (string) ($_POST['name'] ?? '')));
 $message = trim((string) ($_POST['message'] ?? ''));
+$organisation = trim(preg_replace('/\s+/', ' ', (string) ($_POST['organisation'] ?? '')));
+$phone = trim(preg_replace('/\s+/', ' ', (string) ($_POST['phone'] ?? '')));
+$utf8cut = static function (string $s, int $max): string {
+    return function_exists('mb_substr') ? mb_substr($s, 0, $max, 'UTF-8') : substr($s, 0, $max);
+};
+$organisation = $utf8cut($organisation, 160);
+$phone = $utf8cut($phone, 40);
 
 if ($name === '' || $utf8len($name) > 120) {
     http_response_code(400);
@@ -140,7 +147,14 @@ if ($utf8len($message) > 8000) {
 $subject = 'Demo-aanvraag www.bidmind.nl';
 $body = "Demo-aanvraag via de website.\r\n\r\n";
 $body .= 'Naam: ' . $name . "\r\n";
-$body .= 'E-mail: ' . $email . "\r\n\r\n";
+if ($organisation !== '') {
+    $body .= 'Organisatie: ' . $organisation . "\r\n";
+}
+$body .= 'E-mail: ' . $email . "\r\n";
+if ($phone !== '') {
+    $body .= 'Telefoon: ' . $phone . "\r\n";
+}
+$body .= "\r\n";
 $body .= "Aanvraag / bericht:\r\n" . $message . "\r\n\r\n";
 
 $body .= 'Tijdstip: ' . gmdate('Y-m-d H:i:s') . " UTC\r\n";

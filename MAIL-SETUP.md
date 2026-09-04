@@ -2,6 +2,8 @@
 
 Demo-aanvragen komen binnen op **info@bidmind.nl** (tenzij je `CONTACT_EMAIL` of `BIDMIND_MAIL_TO` aanpast), onderwerp: *Demo-aanvraag www.bidmind.nl*.
 
+Het formulier stuurt naam, e-mail en bericht (verplicht) plus organisatie en telefoon (optioneel) mee; beide endpoints (`api/contact.js` en `contact.php`) zetten die velden in de mail.
+
 ## Vercel (productie)
 
 Het contactformulier roept **`/api/contact`** aan (zie `api/contact.js`). In het Vercel-dashboard: **Project → Settings → Environment Variables**.

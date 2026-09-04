@@ -4,117 +4,108 @@
 
 /* ── Sticky nav ── */
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
+const onScrollNav = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScrollNav, { passive: true });
+onScrollNav();
 
 /* ── Hamburger / mobile menu ── */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-  const open = mobileMenu.classList.toggle('open');
-  const spans = hamburger.querySelectorAll('span');
-  spans[0].style.transform = open ? 'rotate(45deg) translate(5px, 5px)' : '';
-  spans[1].style.opacity   = open ? '0' : '';
-  spans[2].style.transform = open ? 'rotate(-45deg) translate(5px, -5px)' : '';
-});
-mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mobileMenu.classList.remove('open');
-  hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-}));
-
-/* ── Scroll reveal (generic .reveal elements) ── */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      e.target.style.transitionDelay = `${(Array.from(e.target.parentElement.children).indexOf(e.target) % 4) * 0.07}s`;
-      e.target.classList.add('visible');
-      revealObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-/* Elements to animate in */
-[
-  '.feat-card', '.step-card', '.fw-card', '.testi-card',
-  '.logo-pill', '.mm-metric', '.bene-item',
-].forEach(sel => {
-  document.querySelectorAll(sel).forEach(el => {
-    el.classList.add('reveal');
-    revealObs.observe(el);
-  });
-});
-
-/* Section headers fade up */
-document.querySelectorAll('.section-h2, .section-sub, .section-label, .feat-main, .bv-card-main').forEach(el => {
-  el.classList.add('reveal');
-  revealObs.observe(el);
-});
-
-/* ── Progress bar animation ── */
-const progFill = document.querySelector('.mm-prog-fill');
-if (progFill) {
-  const target = progFill.style.width;
-  progFill.style.width = '0%';
-  const po = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      setTimeout(() => { progFill.style.width = target; }, 400);
-      po.disconnect();
-    }
-  }, { threshold: 0.5 });
-  po.observe(progFill);
+if (hamburger && mobileMenu) {
+  const setMenu = (open) => {
+    mobileMenu.classList.toggle('open', open);
+    hamburger.classList.toggle('open', open);
+    nav.classList.toggle('menu-open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  };
+  hamburger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+  mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
 }
 
-/* ── Bar chart animation ── */
-document.querySelectorAll('.bvc-bar-before, .bvc-bar-after').forEach(bar => {
-  const target = bar.style.width;
-  bar.style.width = '0%';
-  const bo = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      setTimeout(() => { bar.style.width = target; }, 300);
-      bo.disconnect();
-    }
-  }, { threshold: 0.3 });
-  bo.observe(bar);
-});
+/* ── Scroll reveal ── */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduceMotion && 'IntersectionObserver' in window) {
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const siblings = Array.from(e.target.parentElement.children);
+      const idx = siblings.indexOf(e.target);
+      e.target.style.transitionDelay = `${(idx % 4) * 0.06}s`;
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-/* ── Smooth scroll ── */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
+  ['.step', '.feature', '.case', '.sector', '.trust-list li', '.section-head', '.plan', '.faq-intro', '.faq details', '.cta-inner', '.contact-copy', '.contact-panel']
+    .forEach((sel) => document.querySelectorAll(sel).forEach((el) => {
+      el.classList.add('reveal');
+      revealObs.observe(el);
+    }));
+}
+
+/* ── Smooth scroll with nav offset ── */
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  a.addEventListener('click', (e) => {
     const href = a.getAttribute('href');
-    if (href === '#') return;
+    if (!href || href === '#') return;
     const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-    }
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 76;
+    window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+    history.replaceState(null, '', href);
   });
 });
 
-/** Vercel: `/api/contact`. Klassieke PHP-hosting: zet naar `contact.php` en gebruik FormData i.p.v. JSON. */
+/* ── Active nav highlight ── */
+const sections = Array.from(document.querySelectorAll('main section[id]'));
+const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+if (sections.length && navLinks.length) {
+  const updateActive = () => {
+    let current = '';
+    sections.forEach((s) => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === `#${current}`));
+  };
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+}
+
+/* ── Footer year ── */
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+/* ── Contactformulier ──
+   Vercel: `/api/contact` (JSON). Klassieke PHP-hosting: zet CONTACT_API_URL op 'contact.php'
+   en gebruik FormData i.p.v. JSON (zie MAIL-SETUP.md). */
 const CONTACT_API_URL = '/api/contact';
 
-async function postContactForm(form) {
-  const website = form.querySelector('[name="website"]')?.value ?? '';
-  const name = form.querySelector('#contactName')?.value.trim() ?? '';
-  const email = form.querySelector('#contactEmail')?.value.trim() ?? '';
-  const message = form.querySelector('#contactMessage')?.value.trim() ?? '';
+const contactForm = document.getElementById('contactForm');
+const contactFormMsg = document.getElementById('contactFormMsg');
 
+function readForm(form) {
+  const val = (sel) => form.querySelector(sel)?.value.trim() ?? '';
+  return {
+    website: form.querySelector('[name="website"]')?.value ?? '',
+    name: val('#contactName'),
+    organisation: val('#contactOrg'),
+    email: val('#contactEmail'),
+    phone: val('#contactPhone'),
+    message: val('#contactMessage'),
+  };
+}
+
+async function postContactForm(payload) {
   const res = await fetch(CONTACT_API_URL, {
     method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ website, name, email, message }),
+    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
   });
   const data = await res.json().catch(() => ({}));
   return { res, data };
 }
-
-/* ── Demo-aanvraagformulier (naam, e-mail, bericht → mail via contact.php) ── */
-const contactForm = document.getElementById('contactForm');
-const contactFormMsg = document.getElementById('contactFormMsg');
 
 function showContactFormMessage(text, { error = false, html = false } = {}) {
   if (!contactFormMsg) return;
@@ -134,18 +125,16 @@ function hideContactFormMessage() {
 
 if (contactForm) {
   const submitBtn = contactForm.querySelector('.contact-submit');
-  const defaultContactBtnText = submitBtn ? submitBtn.textContent : '';
+  const defaultBtnText = submitBtn ? submitBtn.textContent : '';
 
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     hideContactFormMessage();
 
-    const name = contactForm.querySelector('#contactName')?.value.trim() ?? '';
-    const email = contactForm.querySelector('#contactEmail')?.value.trim() ?? '';
-    const message = contactForm.querySelector('#contactMessage')?.value.trim() ?? '';
+    const payload = readForm(contactForm);
 
-    if (!name || !email.includes('@') || message.length < 10) {
-      showContactFormMessage('Vul je naam, een geldig e-mailadres en een bericht in (minimaal 10 tekens).', { error: true });
+    if (!payload.name || !payload.email.includes('@') || payload.message.length < 10) {
+      showContactFormMessage('Vul uw naam, een geldig e-mailadres en een bericht van minimaal 10 tekens in.', { error: true });
       return;
     }
 
@@ -153,157 +142,39 @@ if (contactForm) {
     submitBtn.textContent = 'Versturen…';
 
     try {
-      const { res, data } = await postContactForm(contactForm);
+      const { res, data } = await postContactForm(payload);
 
       if (res.ok && data.ok) {
-        submitBtn.textContent = '✓ Verstuurd';
-        submitBtn.style.background = 'var(--green)';
-        submitBtn.disabled = true;
+        submitBtn.textContent = 'Verstuurd';
+        submitBtn.classList.add('is-sent');
         contactForm.reset();
-        showContactFormMessage('Bedankt! Je demo-aanvraag is verstuurd. We nemen zo snel mogelijk contact op.');
+        showContactFormMessage('Bedankt voor uw aanvraag. We nemen binnen één werkdag contact met u op.');
         return;
       }
 
       if (data.error === 'email') {
-        showContactFormMessage('Controleer je e-mailadres.', { error: true });
+        showContactFormMessage('Controleer uw e-mailadres.', { error: true });
       } else if (data.error === 'name' || data.error === 'message') {
         showContactFormMessage('Vul een geldige naam en een bericht van minimaal 10 tekens in.', { error: true });
-      } else if (data.error === 'missing_phpmailer') {
-        showContactFormMessage(
-          'Server mist mail-ondersteuning (PHPMailer). Neem contact op met de beheerder of mail rechtstreeks naar info@bidmind.nl.',
-          { error: true }
-        );
-      } else if (data.error === 'smtp_password_missing') {
-        showContactFormMessage(
-          'E-mail is op de server nog niet geconfigureerd (SMTP-wachtwoord ontbreekt). Mail naar info@bidmind.nl.',
-          { error: true }
-        );
+      } else if (data.error === 'missing_phpmailer' || data.error === 'smtp_password_missing') {
+        showContactFormMessage('Het formulier is tijdelijk niet beschikbaar. Mail ons rechtstreeks op info@bidmind.nl.', { error: true });
       } else {
         const hint = data.detail ? ` Technische info: ${data.detail}` : '';
-        showContactFormMessage(
-          `Versturen is mislukt. Probeer het later opnieuw of mail naar info@bidmind.nl.${hint}`,
-          { error: true }
-        );
+        showContactFormMessage(`Versturen is mislukt. Probeer het later opnieuw of mail naar info@bidmind.nl.${hint}`, { error: true });
       }
     } catch {
       const subj = encodeURIComponent('Demo-aanvraag www.bidmind.nl');
       const body = encodeURIComponent(
-        `Naam: ${name}\nE-mail: ${email}\n\nBericht:\n${message}`
+        `Naam: ${payload.name}\nOrganisatie: ${payload.organisation}\nE-mail: ${payload.email}\nTelefoon: ${payload.phone}\n\nBericht:\n${payload.message}`
       );
       showContactFormMessage(
-        `Kon niet versturen via de server. <a href="mailto:info@bidmind.nl?subject=${subj}&body=${body}">Open je mailapp</a> of mail naar info@bidmind.nl.`,
+        `Kon niet versturen via de server. <a href="mailto:info@bidmind.nl?subject=${subj}&body=${body}">Open uw mailprogramma</a> of mail naar info@bidmind.nl.`,
         { error: true, html: true }
       );
     }
 
     submitBtn.disabled = false;
-    submitBtn.textContent = defaultContactBtnText;
-    submitBtn.style.background = '';
+    submitBtn.textContent = defaultBtnText;
+    submitBtn.classList.remove('is-sent');
   });
-}
-
-/* ── Active nav highlight ── */
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 100) cur = s.getAttribute('id');
-  });
-  navLinks.forEach(l => {
-    l.style.color = '';
-    if (l.getAttribute('href') === `#${cur}`) l.style.color = 'var(--indigo)';
-  });
-}, { passive: true });
-
-/* ── Parallax on hero blobs ── */
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  document.querySelectorAll('.blob').forEach((blob, i) => {
-    blob.style.transform = `translateY(${y * (0.06 + i * 0.02)}px)`;
-  });
-}, { passive: true });
-
-/* ── Stagger for hero stats ── */
-document.querySelectorAll('.hero-social-proof, .hero-btns').forEach(el => {
-  el.classList.add('reveal');
-  revealObs.observe(el);
-});
-
-/* ── Section-header text centered where needed ── */
-document.querySelectorAll('.hiw-section .section-h2, .hiw-section .section-sub, .features-section .section-h2, .features-section .section-sub').forEach(el => {
-  el.style.textAlign = 'center';
-});
-document.querySelectorAll('.features-section .section-sub').forEach(el => {
-  el.style.margin = '0 auto';
-});
-
-/* ── AI generator typewriter text ── */
-const aiGenCard = document.querySelector('.ai-gen-card');
-if (aiGenCard) {
-  const typingLines = Array.from(aiGenCard.querySelectorAll('.agc-typing'));
-
-  const fillAllInstantly = () => {
-    typingLines.forEach(line => { line.textContent = line.dataset.text || ''; });
-    aiGenCard.classList.add('typing-done');
-  };
-
-  const typeLine = (el, done) => {
-    const text = el.dataset.text || '';
-    let idx = 0;
-    const tick = () => {
-      if (idx <= text.length) {
-        el.textContent = text.slice(0, idx);
-        idx += 1;
-        const jitter = 12 + Math.floor(Math.random() * 22);
-        setTimeout(tick, jitter);
-        return;
-      }
-      done();
-    };
-    tick();
-  };
-
-  const startTyping = () => {
-    if (aiGenCard.dataset.typingStarted === 'true') return;
-    aiGenCard.dataset.typingStarted = 'true';
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      fillAllInstantly();
-      return;
-    }
-
-    let lineIdx = 0;
-    const nextLine = () => {
-      if (lineIdx >= typingLines.length) {
-        aiGenCard.classList.add('typing-done');
-        return;
-      }
-      const current = typingLines[lineIdx];
-      lineIdx += 1;
-      typeLine(current, () => setTimeout(nextLine, 220));
-    };
-    nextLine();
-  };
-
-  const maybeStartTyping = () => {
-    const rect = aiGenCard.getBoundingClientRect();
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    if (rect.top < vh * 0.9 && rect.bottom > 0) startTyping();
-  };
-
-  if ('IntersectionObserver' in window) {
-    const typeObs = new IntersectionObserver(entries => {
-      if (!entries.some(entry => entry.isIntersecting)) return;
-      startTyping();
-      typeObs.disconnect();
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    typeObs.observe(aiGenCard);
-  }
-
-  // Fallback: start also on load/scroll so it never stays empty.
-  window.addEventListener('load', maybeStartTyping, { once: true });
-  window.addEventListener('scroll', maybeStartTyping, { passive: true });
-  setTimeout(maybeStartTyping, 900);
-  setTimeout(startTyping, 120);
 }
